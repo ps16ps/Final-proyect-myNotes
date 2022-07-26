@@ -1,0 +1,34 @@
+<div class="user-form-component">
+	<form class="user-form-component__form" (ngSubmit)="onSubmit()" #form="ngForm">
+		<div class="user-form-component__title">Start with myNotes</div>
+		<div class="user-form-component__field">
+			<label class ="user-form-component__label">Name</label>
+			<input class="user-form-component__input" name="name" type="text" placeholder="Name..." [(ngModel)]="user.name" required #nameInput="ngModel">
+			<p class="user-form-component__error" *ngIf="nameInput.invalid && nameInput.touched">
+				Please introduce your name<i class="fa-solid fa-triangle-exclamation"></i>
+			</p>
+		</div>
+		<div class="user-form-component__field">
+			<label class ="user-form-component__label">Username</label>
+			<input class="user-form-component__input" name="username" type="text" placeholder="Username..." [(ngModel)]="user.username" required #usernameInput="ngModel">
+			<p class="user-form-component__error" *ngIf="usernameInput.invalid && usernameInput.touched">
+				Please introduce your usernamename <i class="fa-solid fa-triangle-exclamation"></i>
+			</p>
+		</div>
+		<div class="user-form-component__field">
+			<label class ="user-form-component__label">Email</label>
+			<input class="user-form-component__input" name="email" type="email" placeholder="Email..." [(ngModel)]="user.email" required email #emailInput="ngModel">
+			<p class="user-form-component__error" *ngIf="emailInput.invalid && emailInput.touched">
+				Please introduce a valid email <i class="fa-solid fa-triangle-exclamation"></i>
+			</p>
+		</div>
+		<div class="user-form-component__field">
+			<label class ="user-form-component__label">Password</label>
+			<input class="user-form-component__input" name="password" type="password" placeholder="Password..." [(ngModel)]="user.password" required minlength="6" #passwordInput="ngModel">
+			<p class="user-form-component__error" *ngIf="passwordInput.invalid && passwordInput.touched">
+				Please introduce a password with at least 6 characters <i class="fa-solid fa-triangle-exclamation"></i>
+			</p>
+		</div>
+		<button class ="user-form-component__button" type="submit" [disabled]="form.invalid">Register</button>
+	</form>
+</div>

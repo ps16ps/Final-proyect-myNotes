@@ -1,0 +1,21 @@
+<app-nav-bar></app-nav-bar>
+<div class="new-note-component">
+    <form class="new-note-component__form" (ngSubmit)="onSubmit()" #form="ngForm">
+        <div class="new-note-component__title"> New Note</div>
+        <div class="new-note-component__field">
+            <input class="new-note-component__input" name="name" type="text" placeholder="Your note's title" [(ngModel)]="note.name" required #nameInput="ngModel">
+            <p class="new-note-component__error" *ngIf="nameInput.invalid && nameInput.touched">
+                Title cannot be empty
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </p>
+        </div>
+        <div class="new-note-component__field">
+            <textarea class="new-note-component__textarea" name="content" type="text" placeholder="What don't you want to forget?" [(ngModel)]="note.content" required content #contentInput="ngModel"></textarea>
+            <p class="new-note-component__error" *ngIf="contentInput.invalid && contentInput.dirty">
+                Note body cannot be empty
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </p>
+        </div>
+        <button class="new-note-component__button" type="submit" [disabled]="form.invalid" >Create note</button>
+    </form>
+</div>

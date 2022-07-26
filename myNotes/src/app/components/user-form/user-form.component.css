@@ -1,0 +1,43 @@
+.user-form-component{
+    @apply h-full w-full flex items-center justify-start;
+    background-image: url("src\assets\images\bg-sign-in.jpg");
+    background-position: center center;   
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover; 
+    position:relative;
+   
+}
+
+.user-form-component__form{
+    @apply text-cyan-700 font-syne p-6 rounded-lg bg-white shadow-lg border border-cyan-200 flex flex-col gap-4 w-full;
+    max-width: 450px;
+    position:absolute;
+}
+
+.user-form-component__title {
+    @apply px-4 py-2 text-2xl font-semibold;
+}
+
+.user-form-component__error {
+    @apply text-sm text-yellow-400;
+}
+
+.user-form-component__field {
+    @apply flex flex-col gap-2 my-3;
+}
+  
+
+.user-form-component__input {
+    @apply w-full border rounded-lg border-gray-200 focus:border-cyan-700 outline-none focus:outline-none px-3 py-2;
+}
+
+.user-form-component__button {
+    @apply px-3 py-2 rounded-lg text-cyan-700 border border-cyan-700;
+    @apply hover:bg-cyan-700 hover:text-white ease-in-out duration-300;
+    @apply outline-none no-underline w-full cursor-pointer my-2;
+}
+
+.user-form-component__label{
+    @apply text-xl
+}
