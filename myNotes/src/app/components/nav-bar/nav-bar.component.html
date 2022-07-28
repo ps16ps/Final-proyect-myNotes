@@ -1,5 +1,5 @@
 <div class="top-navbar-component">
-    <a class="top-navbar-component__title" routerLink="/">
+    <a class="top-navbar-component__title" routerLink="/notes">
       myNotes! 
       <i class="fa-solid fa-book-bookmark"></i>
     </a>
@@ -8,8 +8,8 @@
         new Note
         <i class="fa-thin fa-plus"></i>
       </a>
-      <a class="top-navbar-component__logout" routerLink="/user-form">
+      <button class="top-navbar-component__logout" (click)="logout()">
         <i class="fa-solid fa-right-from-bracket"></i>
-      </a>
+      </button>
     </div>
 </div>

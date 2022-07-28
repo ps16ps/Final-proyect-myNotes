@@ -15,15 +15,20 @@ export class NoteItemComponent implements OnInit {
   index: number;
 
   @Output()
-  deleteNoteEvent: EventEmitter<number>; 
+  removeNoteEvent: EventEmitter<number>; 
 
   constructor() {
     this.note = new Note( 0,'', '',0);
     this.index = 0;
-    this.deleteNoteEvent = new EventEmitter<number>();
+    this.removeNoteEvent = new EventEmitter<number>();
   }
 
   ngOnInit(): void {
+    console.log(this.note.id)
+  }
+
+  deleteNote(): void {
+    this.removeNoteEvent.emit(Number(this.note.id));
   }
 
 }

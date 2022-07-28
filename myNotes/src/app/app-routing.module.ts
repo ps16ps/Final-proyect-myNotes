@@ -7,10 +7,10 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  //{ path: '', pathMatch: 'full', redirectTo: 'notes' },
-  //{ path: 'notes', canActivate:[AuthGuardService], component: NotesComponent },
-  { path: 'notes', component: NotesComponent },
-  { path: 'new-note', component: NewNoteComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'notes' },
+  { path: 'notes', canActivate:[AuthGuardService], component: NotesComponent },
+  //{ path: 'notes', component: NotesComponent },
+  { path: 'new-note', canActivate:[AuthGuardService], component: NewNoteComponent },
   { path: 'user-form', component: UserFormComponent },
   { path: 'login', component: LoginComponent }
 ];

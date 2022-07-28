@@ -1,26 +1,9 @@
 .notes-component{
-	@apply h-full flex items-center;
+	@apply pt-24 sm:pt-32 flex items-center;
 }
 
 .notes-component__container {
 	@apply p-8 flex flex-wrap gap-4 sm:gap-8;
-}
-
-.notes-component__item {
-	@apply w-52 h-56 hover:scale-110 bg-cyan-300 hover:bg-cyan-400 ease-in-out duration-300;
-	@apply rounded-lg shadow-lg p-4 flex flex-col items-center text-white cursor-pointer;
-}
-
-.notes-component__name {
-	@apply my-3 text-xl font-semibold w-full text-start;
-}
-
-.notes-component__content {
-	@apply text-ellipsis overflow-hidden w-full;
-	@apply text-sm leading-4 text-justify;
-	display: -webkit-box;
-	-webkit-line-clamp: 8;
-	-webkit-box-orient: vertical;
 }
 
 .notes-component__modal {

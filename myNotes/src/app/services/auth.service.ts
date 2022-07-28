@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { Note } from '../models/note.model';
+import { NoteItemComponent } from '../components/note-item/note-item.component';
 
 @Injectable({
   providedIn: 'root'
@@ -52,9 +53,14 @@ export class AuthService {
     return this.http.get<any>(`${this.BASE_URL}/notes/${id}`);
   }
 
-  addNote(note: Note): Observable<any>{
-    console.log(note)
-    return this.http.post(`${this.BASE_URL}/notes`, note);
+  addNote(name:string, content: string, userId: number): Observable<Note>{
+    const note: Note = new Note(
+      null,
+      name,
+      content,
+      userId
+    );
+    return this.http.post<Note>(`${this.BASE_URL}/notes`, note);
   }
 
   updateNote(id: number): Observable<any>{
@@ -62,6 +68,7 @@ export class AuthService {
   }
 
   deleteNote(id: number): Observable<Object>{
+    console.log("Estoy en el auth service")
     return this.http.delete(`${this.BASE_URL}/notes/${id}`);
   }
 
@@ -74,7 +81,7 @@ export class AuthService {
   }
 
   getNotesByUserId(userId: number): Observable<any>{
-    return this.http.get<any>(`${this.BASE_URL}/notes/users${userId}`);
+    return this.http.get<Note[]>(`${this.BASE_URL}/notes/users/${userId}`);
   }
 
 

@@ -18,7 +18,8 @@ export class NotesComponent implements OnInit {
 }
 
 ngOnInit(): void {
-  this.authService.getAllNotes().subscribe(
+  const userId: number = JSON.parse(localStorage.getItem('currentUser') as string).id;
+  this.authService.getNotesByUserId(userId).subscribe(
     (notes) => {
       this.noteList = notes;
     }
@@ -26,12 +27,12 @@ ngOnInit(): void {
 }
 
 
-deleteNote(id: number){
+removeNote(id: number, index: number){
   console.log("Borrando la nota: ", id)
-  // this.authService.deleteNote(id).subscribe(() => {
-  //       this.noteList.splice(index, 1);
-  //       console.log(this.noteList);
-  //     }
-  //   )
+  this.authService.deleteNote(id).subscribe(() => {
+        this.noteList.splice(index, 1);
+        console.log(this.noteList);
+      }
+    )
   }
 }

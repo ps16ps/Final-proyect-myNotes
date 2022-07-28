@@ -1,10 +1,32 @@
-<div class="notes-component__container">
-    <div class="notes-component__item" id="modal-1">
-      <div class="notes-component__name">
+<div class="note-item-component" id="note-item-{{note.id}}">
+  <div class="note-item-component__name">
+    {{note.name}}
+  </div>
+  <div class="note-item-component__content">
+    {{note.content}}
+  </div>
+</div>
+
+<div class="note-item-component-modal" id="note-item-modal-{{note.id}}">
+  <div class="note-item-component-modal__container">
+    <div class="note-item-component-modal__header">
+      <div class="note-item-component-modal__name">
         {{note.name}}
       </div>
-      <div class="notes-component__content">
-        {{note.content}}
+      <div class="note-item-component-modal__actions">
+        <a class="note-item-component-modal__icon" routerLink="#">
+          <i class="fa-solid fa-pen"></i>
+        </a>
+        <button class="note-item-component-modal__icon" type="button" (click)="deleteNote()">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+        <button>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
     </div>
+    <div class="note-item-component-modal__content">
+      {{note.content}}
+    </div>
+  </div>
 </div>

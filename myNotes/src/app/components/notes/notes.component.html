@@ -1,7 +1,9 @@
 <app-nav-bar></app-nav-bar>
 <div class="notes-component">
-  <div class="notes-component__container" *ngFor="let note of noteList, let i=index" >
-    <app-note-item [note]="note" [index]="i" (removeNoteEvent)="deleteNote(i)"></app-note-item>
+  <div class="notes-component__container" >
+    <div class="notes-component__item" *ngFor="let note of noteList, let i=index" >
+      <app-note-item [note]="note" [index]="i" (removeNoteEvent)="removeNote($event, i)"></app-note-item>
+    </div>
   </div>
 </div>
 

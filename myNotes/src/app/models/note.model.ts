@@ -31,4 +31,15 @@ export class Note {
     public set userId(value: number) {
         this._userId = value;
     }
+
+    public toJSON(): object {
+        return {
+            id: this._id,
+            name: this._name,
+            content:this._content,
+            userId: this._userId,
+            
+        };
+    }
+
 }

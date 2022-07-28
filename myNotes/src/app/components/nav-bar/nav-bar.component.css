@@ -1,5 +1,5 @@
 .top-navbar-component{
-  @apply fixed top-0 px-6 flex justify-between h-24 sm:h-32 items-center w-full;
+  @apply fixed top-0 px-6 flex justify-between h-24 sm:h-32 items-center w-full bg-cyan-50 z-50;
 }
 
 .top-navbar-component__title{

@@ -47,11 +47,6 @@ public class EdgeControllerImpl implements EdgeController {
     @PostMapping("/notes")
     @ResponseStatus (HttpStatus.CREATED)
     public Note saveNote(@RequestBody Note note) {
-        System.out.println("######################################################################");
-        System.out.println("######################################################################");
-        System.out.println(note.getContent());
-        System.out.println("######################################################################");
-        System.out.println("######################################################################");
         return noteClient.saveNote(note);
     }
 
@@ -89,10 +84,18 @@ public class EdgeControllerImpl implements EdgeController {
     @GetMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public UserDTO login(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        System.out.println("login hecho !!!!!!!!!!! :)))))");
         customUserDetails.getUser().setPassword(null);
         return edgeService.userToDTO(customUserDetails.getUser());
     }
 
-
+    @GetMapping("/notes/users/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Note> findByUserId(@PathVariable Long userId) {
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+        System.out.println("aki tamos");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+        return noteClient.findByUserId(userId);
+    }
 }
