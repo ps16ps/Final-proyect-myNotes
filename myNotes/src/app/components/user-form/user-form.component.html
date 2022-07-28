@@ -1,5 +1,5 @@
 <div class="user-form-component">
-	<form class="user-form-component__form" (ngSubmit)="onSubmit()" #form="ngForm">
+	<form class="user-form-component__form" (ngSubmit)="register()" #form="ngForm">
 		<div class="user-form-component__title">Start with myNotes</div>
 		<div class="user-form-component__field">
 			<label class ="user-form-component__label">Name</label>
@@ -12,7 +12,7 @@
 			<label class ="user-form-component__label">Username</label>
 			<input class="user-form-component__input" name="username" type="text" placeholder="Username..." [(ngModel)]="user.username" required #usernameInput="ngModel">
 			<p class="user-form-component__error" *ngIf="usernameInput.invalid && usernameInput.touched">
-				Please introduce your usernamename <i class="fa-solid fa-triangle-exclamation"></i>
+				Please introduce your username <i class="fa-solid fa-triangle-exclamation"></i>
 			</p>
 		</div>
 		<div class="user-form-component__field">

@@ -30,7 +30,7 @@ public class UserControllerImpl implements UserController {
     @ResponseStatus(HttpStatus.OK)
     public User findByUsername(@RequestParam Optional<String> username) {
         if(username.isPresent()){
-            userRepository.findByUsername(username.get());
+            return userRepository.findByUsername(username.get());
         }
         return null;
     }
@@ -46,5 +46,14 @@ public class UserControllerImpl implements UserController {
     public void delete(@PathVariable Long id) {
         userService.delete(id);
     }
+
+//    @GetMapping("/login")
+//    @ResponseStatus(HttpStatus.OK)
+//    public User login(@AuthenticationPrincipal User user) {
+//        System.out.println("login hecho !!!!!!!!!!! :)))))");
+//        user.setPassword(null);
+//        return user;
+//    }
+
 }
 

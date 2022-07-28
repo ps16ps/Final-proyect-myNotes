@@ -17,10 +17,11 @@ public class SecurityConfiguration {
         http.httpBasic(); // Vamos a utilizar basic auth
         http.csrf().disable(); // Desactivamos la protección CSRF porque nosotros no vamos a manejar el HTML
         http.authorizeRequests() // Vamos a estacler la protección de cada endpoint individualmente
-                .antMatchers(HttpMethod.GET, "/notes").authenticated()
-                .antMatchers(HttpMethod.POST, "/notes").authenticated()
-                .antMatchers(HttpMethod.PUT, "/notes/**").authenticated()
-                .antMatchers(HttpMethod.DELETE, "/notes/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/login").authenticated()
+//                .antMatchers(HttpMethod.POST, "/notes").authenticated()
+//                .antMatchers(HttpMethod.PUT, "/notes/**").authenticated()
+//                .antMatchers(HttpMethod.DELETE, "/notes/**").authenticated()
+//                .antMatchers(HttpMethod.GET, "/notes").authenticated()
                 .anyRequest().permitAll(); // El resto de los enpoints son públicos
         return http.build();
     }

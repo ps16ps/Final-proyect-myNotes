@@ -1,37 +1,37 @@
-.user-form-component{
+.login-component{
     @apply h-full w-full flex items-center justify-start bg-center bg-cover bg-no-repeat relative;
-    background-image: url("src\assets\images\bg-sign-in.jpg");
+    
 }
 
-.user-form-component__form{
+.login-component__form{
     @apply absolute text-cyan-700 font-syne p-6 rounded-lg bg-white shadow-lg border border-cyan-200 flex flex-col gap-4 w-full;
     max-width: 450px;
     left: 18%;
 }
 
-.user-form-component__title {
+.login-component__title {
     @apply px-4 py-2 text-2xl font-semibold;
 }
 
-.user-form-component__error {
+.login-component__error {
     @apply text-sm text-yellow-400;
 }
 
-.user-form-component__field {
+.login-component__field {
     @apply flex flex-col gap-2 my-3;
 }
   
 
-.user-form-component__input {
+.login-component__input {
     @apply w-full border rounded-lg border-gray-200 focus:border-cyan-700 outline-none focus:outline-none px-3 py-2;
 }
 
-.user-form-component__button {
+.login-component__button {
     @apply px-3 py-2 rounded-lg text-cyan-700 border border-cyan-700;
     @apply hover:bg-cyan-700 hover:text-white ease-in-out duration-300;
     @apply outline-none no-underline w-full cursor-pointer my-2;
 }
 
-.user-form-component__label{
+.login-component__label{
     @apply text-xl
 }

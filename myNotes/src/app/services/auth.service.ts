@@ -2,17 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
+import { Note } from '../models/note.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
- 
   readonly BASE_URL = 'http://localhost:8080';
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   isAuthenticated(): boolean {
     const token: string | null = localStorage.getItem('currentUser');
@@ -20,34 +18,64 @@ export class AuthService {
   }
 
   register(name:string, username: string, email:string, password: string): Observable<User> {
-
     const user: User = new User(
       null,
       name,
       username,
       email,
       password,
-      []
+      null
     );
-
-    return this.http.post<User>(`${this.BASE_URL}/users`, user);
-          
+    return this.http.post<User>(`${this.BASE_URL}/users`, user);        
   }
 
   login(username: string, password: string): Observable<User> {
+
+    console.log(username, password)
+
     let headers = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa(`${username}:${password}`));
+    headers = headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
+   
+    return this.http.get<User>(`${this.BASE_URL}/login`, { headers: headers });       
+  }
 
-    return this.http.get<User>(`${this.BASE_URL}/login`, { headers: headers });
-        
-}
-
-logout(): void {
+  logout(): void {
     // Remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-}
- //Llamamos a nuestro Backend 
- getTeam(trainerId: number): Observable<any>{
-  return this.http.get(`${this.BASE_URL}/teams/${trainerId}`);
-}
+  }
+  //Llamamos a nuestro Backend 
+  getAllNotes(): Observable<any>{
+    return this.http.get<Note[]>(`${this.BASE_URL}/notes`);
+  }
+
+  getNotesById(id: number): Observable<any>{
+    return this.http.get<any>(`${this.BASE_URL}/notes/${id}`);
+  }
+
+  addNote(note: Note): Observable<any>{
+    console.log(note)
+    return this.http.post(`${this.BASE_URL}/notes`, note);
+  }
+
+  updateNote(id: number): Observable<any>{
+    return this.http.put(`${this.BASE_URL}/notes/${id}`, Note);
+  }
+
+  deleteNote(id: number): Observable<Object>{
+    return this.http.delete(`${this.BASE_URL}/notes/${id}`);
+  }
+
+  usersById(id: number): Observable<any>{
+    return this.http.get<any>(`${this.BASE_URL}/users/${id}`);
+  }
+
+  deleteUser(id: number): Observable<Object>{
+    return this.http.delete(`${this.BASE_URL}/users/${id}`);
+  }
+
+  getNotesByUserId(userId: number): Observable<any>{
+    return this.http.get<any>(`${this.BASE_URL}/notes/users${userId}`);
+  }
+
+
 }

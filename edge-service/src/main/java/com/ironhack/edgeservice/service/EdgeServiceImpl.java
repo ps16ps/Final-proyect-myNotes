@@ -35,4 +35,14 @@ public class EdgeServiceImpl implements EdgeService {
         return userDTO;
     }
 
+    public UserDTO userToDTO(User user) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(user.getUsername());
+        userDTO.setPassword(user.getPassword());
+        userDTO.setId(user.getId());
+        userDTO.setName(user.getName());
+        userDTO.setEmail(user.getEmail());
+
+        return userDTO;
+    }
 }

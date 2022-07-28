@@ -27,7 +27,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.role = "USER";
     }
 
     public String getUsername() {
@@ -39,11 +39,11 @@ public class User {
     }
 
     public String getRole() {
-        return role;
+        return "USER";
     }
 
     public void setRole(String role) {
-        this.role = role;
+        this.role = "USER";
     }
 
     public long getId() {

@@ -6,15 +6,20 @@ import com.ironhack.edgeservice.controller.dto.UserDTO;
 import com.ironhack.edgeservice.controller.interfaces.EdgeController;
 import com.ironhack.edgeservice.model.Note;
 import com.ironhack.edgeservice.model.User;
+import com.ironhack.edgeservice.security.CustomUserDetails;
 import com.ironhack.edgeservice.service.EdgeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 @RestController
+@Slf4j
+@CrossOrigin("*")
 public class EdgeControllerImpl implements EdgeController {
 
     @Autowired
@@ -42,6 +47,11 @@ public class EdgeControllerImpl implements EdgeController {
     @PostMapping("/notes")
     @ResponseStatus (HttpStatus.CREATED)
     public Note saveNote(@RequestBody Note note) {
+        System.out.println("######################################################################");
+        System.out.println("######################################################################");
+        System.out.println(note.getContent());
+        System.out.println("######################################################################");
+        System.out.println("######################################################################");
         return noteClient.saveNote(note);
     }
 
@@ -76,5 +86,13 @@ public class EdgeControllerImpl implements EdgeController {
     public void deleteUser(@PathVariable Long id) {
         userClient.delete(id);
     }
+    @GetMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO login(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        System.out.println("login hecho !!!!!!!!!!! :)))))");
+        customUserDetails.getUser().setPassword(null);
+        return edgeService.userToDTO(customUserDetails.getUser());
+    }
+
 
 }

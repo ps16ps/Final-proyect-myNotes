@@ -1,0 +1,20 @@
+<div class="login-component">
+	<form class="login-component__form" (ngSubmit)="login()" #form="ngForm">
+		<div class="login-component__title">Hello again!</div>
+		<div class="login-component__field">
+			<label class ="login-component__label">Username</label>
+			<input class="login-component__input" name="username" type="text" placeholder="username..." [(ngModel)]="user.username" required #nameInput="ngModel">
+			<p class="login-component__error" *ngIf="nameInput.invalid && nameInput.touched">
+				Please introduce your username<i class="fa-solid fa-triangle-exclamation"></i>
+			</p>
+		</div>
+        <div class="login-component__field">
+			<label class ="login-component__label">Password</label>
+			<input class="login-component__input" name="password" type="password" placeholder="Password..." [(ngModel)]="user.password" required minlength="6" #passwordInput="ngModel">
+			<p class="login-component__error" *ngIf="passwordInput.invalid && passwordInput.touched">
+				Please introduce a password with at least 6 characters <i class="fa-solid fa-triangle-exclamation"></i>
+			</p>
+		</div>
+        <button class ="login-component__button" type="submit" [disabled]="form.invalid">login</button>
+	</form>
+</div>

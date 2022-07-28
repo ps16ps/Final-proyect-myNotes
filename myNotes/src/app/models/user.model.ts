@@ -1,14 +1,13 @@
 import { Note } from "./note.model";
 
-export class User {
-    
+export class User { 
     constructor(
         private _id: number | null,
         private _name: string,
         private _username: string,
         private _email: string,
         private _password: string,
-       private _noteList: Note[]
+        private _noteList: Note[]  | null
     ) { }
 
     public get id(): number | null {
@@ -41,10 +40,10 @@ export class User {
     public set password(value: string) {
         this._password = value;
     }
-    public get noteList(): Note[] {
+    public get noteList(): Note[]  | null {
         return this._noteList;
     }
-    public set noteList(value: Note[]) {
+    public set noteList(value: Note[] | null) {
         this._noteList = value;
     }
 

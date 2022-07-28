@@ -1,74 +1,8 @@
 <app-nav-bar></app-nav-bar>
 <div class="notes-component">
-    <div class="notes-component__container">
-      <div class="notes-component__item" id="modal-1">
-        <div class="notes-component__name">Note Name 1</div>
-        <div class="notes-component__content">
-          Lorem ipsum nos q nose cuantos es 
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose cuantos es
-        </div>
-      </div>
-      <div class="notes-component__item" id="modal-2">
-        <div class="notes-component__name">Note Name 2</div>
-        <div class="notes-component__content">
-          Series recomendadas:
-            -Stranger Things, This is Us, Outlander, Arcane, Sense8
-        </div>
-      </div>
-      <div class="notes-component__item" id="modal-3">
-        <div class="notes-component__name">Note Name3</div>
-        <div class="notes-component__content">
-          Lorem ipsum nos q nose cuantos es 
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose 
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose 
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose cuantos es
-        </div>
-      </div>
-      <div class="notes-component__item" id="modal-4">
-        <div class="notes-component__name">Note Name4</div>
-        <div class="notes-component__content">
-          Lorem ipsum nos q nose cuantos es 
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose cuantos es
-        </div>
-      </div>
-      <div class="notes-component__item" id="modal-5">
-        <div class="notes-component__name">Note Name 5</div>
-        <div class="notes-component__content">
-          La cita con el medico es el viernes a la 12.30.
-          La cita con el dentista es el lunes 1 a las 10.00;
-          Recoger a Juan el sabado del cumpleaños.
-        </div>
-      </div>
-      <div class="notes-component__item" id="modal-6">
-        <div class="notes-component__name">Note Name 6</div>
-        <div class="notes-component__content">
-         tengo que comprar:huevos harina, sal, fruta, leche y pan de molde.
-        </div>
-      </div>
-    </div>
-    
-    <div class="notes-component__modal" id="modal-1" aria-hidden="true">
-      <div tabindex="-1" data-micromodal-close>
-        <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
-          <header>
-            <h2 id="modal-1-title">
-              Note Name 1
-            </h2>
-            <button aria-label="Close modal" data-micromodal-close></button>
-          </header>
-          <div id="modal-1-content">
-            Lorem ipsum nos q nose cuantos es 
-          Lorem ipsum nos q nose cuantos es
-          Lorem ipsum nos q nose cuantos es
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="notes-component__container" *ngFor="let note of noteList, let i=index" >
+    <app-note-item [note]="note" [index]="i" (removeNoteEvent)="deleteNote(i)"></app-note-item>
   </div>
+</div>
+
+

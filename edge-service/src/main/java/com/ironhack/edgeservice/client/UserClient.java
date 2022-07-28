@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.client;
 import com.ironhack.edgeservice.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface UserClient {
 
     @DeleteMapping("/users/{id}")
     public void delete(@PathVariable Long id);
+
+    @GetMapping("/login")
+    public User login(@AuthenticationPrincipal User user);
 }
