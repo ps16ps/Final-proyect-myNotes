@@ -31,4 +31,19 @@ export class NoteItemComponent implements OnInit {
     this.removeNoteEvent.emit(Number(this.note.id));
   }
 
+  showModal(){
+    const modal = document.getElementById(`note-item-modal-${this.note.id}`)
+    if(modal) {
+      modal.classList.remove("note-item-component-modal--hide")
+      modal.classList.add("note-item-component-modal--show")
+    }
+  }
+
+  hideModal() {
+    const modal = document.getElementById(`note-item-modal-${this.note.id}`)
+    if(modal) {
+      modal.classList.add("note-item-component-modal--hide")
+      modal.classList.remove("note-item-component-modal--show")
+    }
+  }
 }

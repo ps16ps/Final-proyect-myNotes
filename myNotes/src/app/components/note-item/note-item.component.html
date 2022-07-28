@@ -1,4 +1,4 @@
-<div class="note-item-component" id="note-item-{{note.id}}">
+<div class="note-item-component" (click)="showModal()">
   <div class="note-item-component__name">
     {{note.name}}
   </div>
@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="note-item-component-modal" id="note-item-modal-{{note.id}}">
+<div class="note-item-component-modal note-item-component-modal--hide" (click)="hideModal()" id="note-item-modal-{{note.id}}">
   <div class="note-item-component-modal__container">
     <div class="note-item-component-modal__header">
       <div class="note-item-component-modal__name">
@@ -20,7 +20,7 @@
         <button class="note-item-component-modal__icon" type="button" (click)="deleteNote()">
           <i class="fa-solid fa-trash"></i>
         </button>
-        <button>
+        <button type="button" (click)="hideModal()">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
